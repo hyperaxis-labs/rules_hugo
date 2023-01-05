@@ -7,6 +7,7 @@ exports_files( ["hugo"] )
 
 def _hugo_repository_impl(repository_ctx):
     hugo = "hugo"
+    ext = "tar.gz"
     if repository_ctx.attr.extended:
         hugo = "hugo_extended"
 
@@ -20,10 +21,11 @@ def _hugo_repository_impl(repository_ctx):
     else:
         os_arch = "Linux-64bit"
     
-    url = "https://github.com/gohugoio/hugo/releases/download/v{version}/{hugo}_{version}_{os_arch}.tar.gz".format(
+    url = "https://github.com/gohugoio/hugo/releases/download/v{version}/{hugo}_{version}_{os_arch}.{ext}".format(
         hugo = hugo,
         os_arch = os_arch,
         version = repository_ctx.attr.version,
+        ext = ext,
     )
 
     repository_ctx.download_and_extract(
