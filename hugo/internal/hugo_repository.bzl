@@ -17,7 +17,7 @@ def _hugo_repository_impl(repository_ctx):
     if os_name.startswith("mac os"):
         os_arch = "macOS-64bit"
     elif os_name.find("windows") != -1:
-        os_arch = "Windows-64bit"
+        os_arch = "Windows-amd64"
         ext = "zip"
     else:
         os_arch = "Linux-64bit"
